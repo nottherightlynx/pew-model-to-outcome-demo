@@ -1,0 +1,8 @@
+source_id,source_type,location,rights_or_basis,role,real_or_synthetic
+fixture_state,local_fixture,data/state_policy_fixture.html,Created for candidate demo,HTML structural audit,synthetic
+fixture_marine,local_fixture,data/marine_fixture.html,Created for candidate demo,HTML structural audit,synthetic
+sample_observations,local_fixture,data/synthetic_observations.csv,Created for candidate demo,Platform observation scenario,synthetic
+pew_homepage,official_website,https://www.pew.org/,Public website linked for context only,Institutional reference; not scraped,real
+schema_org,technical_documentation,https://schema.org/,Public standards documentation,Metadata research reference,real
+w3c_wcag,technical_documentation,https://www.w3.org/TR/WCAG22/,Public standard,Accessibility validation reference,real
+search_central,technical_documentation,https://developers.google.com/search/docs,Public documentation,Search and structured data guidance,real

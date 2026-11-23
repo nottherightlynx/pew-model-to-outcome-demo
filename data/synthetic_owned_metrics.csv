@@ -1,0 +1,14 @@
+portfolio_id,platform,source,metric,value,period_start,period_end,provenance,synthetic
+state_policy,Search,search_console_proposed,impressions,1850,2026-10-01,2026-10-31,Synthetic Search Console-like performance export,True
+state_policy,Search,search_console_proposed,clicks,138,2026-10-01,2026-10-31,Synthetic Search Console-like performance export,True
+state_policy,Search,google_analytics,sessions,114,2026-10-01,2026-10-31,Synthetic Google Analytics aggregate export,True
+state_policy,Search,google_analytics,engaged_sessions,74,2026-10-01,2026-10-31,Synthetic Google Analytics aggregate export,True
+state_policy,LinkedIn,google_analytics,sessions,55,2026-10-01,2026-10-31,Synthetic Google Analytics LinkedIn referral cohort,True
+state_policy,LinkedIn,google_analytics,engaged_sessions,31,2026-10-01,2026-10-31,Synthetic Google Analytics LinkedIn referral cohort,True
+state_policy,YouTube,google_analytics,sessions,12,2026-10-01,2026-10-31,Synthetic Google Analytics YouTube referral cohort,True
+marine_management,Search,search_console_proposed,impressions,2410,2026-10-01,2026-10-31,Synthetic Search Console-like performance export,True
+marine_management,Search,search_console_proposed,clicks,181,2026-10-01,2026-10-31,Synthetic Search Console-like performance export,True
+marine_management,Search,google_analytics,sessions,155,2026-10-01,2026-10-31,Synthetic Google Analytics aggregate export,True
+marine_management,LinkedIn,google_analytics,sessions,27,2026-10-01,2026-10-31,Synthetic Google Analytics LinkedIn referral cohort,True
+marine_management,YouTube,google_analytics,sessions,84,2026-10-01,2026-10-31,Synthetic Google Analytics YouTube referral cohort,True
+marine_management,YouTube,google_analytics,engaged_sessions,48,2026-10-01,2026-10-31,Synthetic Google Analytics YouTube referral cohort,True

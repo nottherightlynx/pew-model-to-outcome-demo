@@ -1,0 +1,7 @@
+portfolio_id,platform,organic_mentions,qualified_mentions,format_fit,measurement_note
+state_policy,LinkedIn,6,2,0.48,Entire row is synthetic; not LinkedIn or Pew performance data
+state_policy,Search,10,5,0.78,Entire row is synthetic; not search engine or Pew performance data
+state_policy,YouTube,2,0,0.25,Entire row is synthetic; not YouTube or Pew performance data
+marine_management,LinkedIn,5,2,0.45,Entire row is synthetic; not LinkedIn or Pew performance data
+marine_management,Search,8,4,0.55,Entire row is synthetic; not search engine or Pew performance data
+marine_management,YouTube,12,8,0.40,Entire row is synthetic; not YouTube or Pew performance data

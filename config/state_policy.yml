@@ -1,0 +1,30 @@
+portfolio_id: state_policy
+portfolio_label: State Fiscal Policy — illustrative demo
+asset: data/state_policy_fixture.html
+audience: State fiscal analysts, legislative staff, and policy journalists
+objective: Improve qualified discoverability of fiscal research while retaining precise definitions.
+priority_terms:
+  - state budget
+  - fiscal sustainability
+  - budget stabilization fund
+  - rainy day fund
+platforms:
+  LinkedIn:
+    audience_fit: 0.90
+    default_format_fit: 0.48
+    desired_format: "a 5-card, source-linked PDF carousel for analysts"
+  Search:
+    audience_fit: 0.95
+    default_format_fit: 0.78
+    desired_format: "an accessible HTML explainer with clear question-based headings"
+  YouTube:
+    audience_fit: 0.35
+    default_format_fit: 0.25
+    desired_format: "a short captioned explainer with an immediate question-led opening"
+weights:
+  audience: 0.20
+  cooccurrence: 0.18
+  semantic: 0.24
+  technical: 0.23
+  format: 0.15
+mission_value: 1.0

@@ -1,0 +1,9 @@
+# Native Streamlit theme; avoids brittle CSS selectors and unsafe HTML injection.
+# Contrast and touch behavior should still be tested on actual phones and browsers.
+[theme]
+base = "light"
+primaryColor = "#205A70"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F1F5F7"
+textColor = "#172631"
+font = "sans serif"

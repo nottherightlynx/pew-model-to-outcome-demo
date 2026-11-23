@@ -1,0 +1,107 @@
+"""Local model-to-outcome demo: streamlit run app.py"""
+from __future__ import annotations
+
+import csv
+from pathlib import Path
+
+import pandas as pd
+
+import streamlit as st
+import yaml
+
+from rules import documentation_change_proposal, generate_recommendations
+from scoring import score_asset
+
+ROOT = Path(__file__).resolve().parent
+
+
+def load_config(portfolio: str) -> dict:
+    with (ROOT / "config" / f"{portfolio}.yml").open(encoding="utf-8") as handle:
+        return yaml.safe_load(handle)
+
+
+def load_observation(portfolio: str, platform: str) -> dict:
+    with (ROOT / "data" / "synthetic_observations.csv").open(newline="", encoding="utf-8") as handle:
+        for item in csv.DictReader(handle):
+            if item["portfolio_id"] == portfolio and item["platform"] == platform:
+                return {
+                    "organic_mentions": int(item["organic_mentions"]),
+                    "qualified_mentions": int(item["qualified_mentions"]),
+                    "format_fit": float(item["format_fit"]),
+                    "measurement_note": item["measurement_note"],
+                }
+    return {}
+
+
+st.set_page_config(page_title="Model-to-Outcome Optimizer | Unofficial Demo", layout="wide")
+st.title("Adaptive Cross-Platform Content Optimizer")
+st.caption("Independent candidate prototype • not affiliated with or endorsed by Pew • all performance observations are synthetic")
+
+portfolio = st.sidebar.selectbox(
+    "Portfolio", ["state_policy", "marine_management"],
+    format_func=lambda p: {"state_policy": "State Fiscal Policy", "marine_management": "Marine Management"}[p],
+)
+config = load_config(portfolio)
+platform = st.sidebar.selectbox("Audience platform", list(config["platforms"]))
+
+st.subheader(config["portfolio_label"])
+st.write("**Target audience:**", config["audience"])
+st.write("**Optimization objective:**", config["objective"])
+
+html_path = ROOT / config["asset"]
+html = html_path.read_text(encoding="utf-8")
+obs = load_observation(portfolio, platform)
+result = score_asset(html, config, platform, obs)
+recommendations = generate_recommendations(config, result)
+
+left, middle, right = st.columns(3)
+left.metric("Illustrative diagnostic score", f"{result['score']:.1f} / 100")
+middle.metric("Data dimension coverage", f"{result['coverage'] * 100:.0f}%")
+right.metric("Ranked optimization actions", len(recommendations))
+st.warning(result["warning"])
+
+with st.expander("1. Model inputs and components", expanded=True):
+    labels = {
+        "audience": "Audience-platform fit",
+        "cooccurrence": "Organic co-occurrence proxy",
+        "semantic": "Semantic/entity term coverage",
+        "technical": "Technical page readiness",
+        "format": "Platform-format fit",
+    }
+    for key, val in result["components"].items():
+        st.write(f"**{labels[key]}:** {val:.2f}  | configured weight: {config['weights'][key]:.0%}")
+    st.caption("Scores represent diagnostic conditions; no lift or ranking improvement is claimed.")
+
+st.subheader("2. Recommended changes, ranked by scenario priority")
+if recommendations:
+    for index, rec in enumerate(recommendations, 1):
+        with st.container(border=True):
+            st.markdown(f"**{index}. {rec['dimension'].title()} — scenario priority {rec['illustrative_priority']}**")
+            st.write(rec["action"])
+            st.caption("Evidence: " + rec["evidence"])
+            st.caption("Assumed work: " + str(rec["effort_hours_assumed"]) + " hours | " + rec["approval"])
+            st.caption("Limit: " + rec["caution"])
+else:
+    st.info("No rule thresholds triggered; review source quality before publishing.")
+
+st.subheader("3. Test the recommendation, not the algorithm myth")
+st.markdown(
+    """Choose one recommended change; record the original asset and an editorially approved variant.
+    Pre-register a platform-specific primary measure (e.g. qualified click-through or attributable
+    completion) and guardrails (accuracy, accessibility and negative feedback). Randomize when permitted;
+    otherwise use repeated matched windows and disclose confounders. Do not equate score change with
+    a percentage change in actual visibility."""
+)
+st.subheader("4. Documentation change review")
+proposal = documentation_change_proposal(
+    "https://developers.google.com/search/docs",
+    "Example only: suppose documentation changes a structured-data eligibility requirement.",
+)
+st.json(proposal)
+st.caption("No feed is being polled in this offline MVP; production feed monitoring needs source verification and approval.")
+
+with st.expander("Source and licensing register"):
+    st.dataframe(
+    pd.read_csv(ROOT / "data" / "source_register.csv"),
+    use_container_width=True
+)

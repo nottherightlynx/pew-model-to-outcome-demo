@@ -1,0 +1,30 @@
+portfolio_id: marine_management
+portfolio_label: Marine Management — illustrative demo
+asset: data/marine_fixture.html
+audience: Marine scientists, conservation practitioners, and environmental journalists
+objective: Improve the retrievability and usability of marine management research and visual assets.
+priority_terms:
+  - marine protected areas
+  - fisheries management
+  - habitat monitoring
+  - marine biodiversity
+platforms:
+  LinkedIn:
+    audience_fit: 0.65
+    default_format_fit: 0.45
+    desired_format: "an expert-oriented graphic with a linked methodology"
+  Search:
+    audience_fit: 0.90
+    default_format_fit: 0.55
+    desired_format: "a searchable map explanation with accessible text equivalents"
+  YouTube:
+    audience_fit: 0.80
+    default_format_fit: 0.40
+    desired_format: "a captioned 60-second visual explainer with citations"
+weights:
+  audience: 0.17
+  cooccurrence: 0.20
+  semantic: 0.24
+  technical: 0.19
+  format: 0.20
+mission_value: 1.0
